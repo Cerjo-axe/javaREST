@@ -18,8 +18,6 @@ public class UserService {
 
     @Autowired
     private IUserRepository userRepository;
-    @Autowired
-    private ITaskRepository taskRepository;
 
     public User findById(Long id) {
         Optional<User> user = this.userRepository.findById(id);
@@ -28,9 +26,8 @@ public class UserService {
 
     @Transactional
     public User create(User obj) {
-        obj.setIdobj.getPassword();
+        obj.setId(null);
         obj = this.userRepository.save(obj);
-        this.taskRepository.saveAll(obj.getTasks());
         return obj;
     }
 
