@@ -13,8 +13,5 @@ import com.sergioluiz.simpleAPI.Models.Task;
 @Repository
 public interface ITaskRepository extends JpaRepository<Task, Long> {
 
-    Optional<Task> findById(Long id);
-
-    @Query(value = "SELECT * FROM task t WHERE t.user_id = :id", nativeQuery = true)
-    List<Task> findByUser_Id(@Param("id") Long id);
+    List<Task> findByUser_Id(Long id);
 }
